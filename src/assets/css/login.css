@@ -1,0 +1,9 @@
+.login {
+    background: linear-gradient(to bottom, rgba(0,212,255,1) 0%, rgba(54,54,91,1) 0%, rgba(13,10,65,0.19044114227722342) 100%), url("../img/bg.jpg");
+    height: 100vh;
+    font-family: "Montserrat" !important;
+}
+
+.card-login {
+    margin-top: 20vh;
+}

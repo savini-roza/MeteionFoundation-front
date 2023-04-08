@@ -1,24 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import Template from "./components/Template";
+import "./App.css";
+import { BrowserRouter } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { selectUser } from "./features/UserSlice";
+import { ConfigProvider } from 'antd';
+import "@fontsource/montserrat";
+import LoginSignInRoutes from "./routes/LoginSignInRoutes";
 
 function App() {
+  const user = useSelector(selectUser);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <ConfigProvider
+        theme={{
+          token: {
+            fontFamily: "Montserrat"
+          }
+        }}>
+        <BrowserRouter>
+          {user.user > 0 ? <Template /> : <LoginSignInRoutes />}
+        </BrowserRouter>
+      </ConfigProvider>
+    </>
   );
 }
 
